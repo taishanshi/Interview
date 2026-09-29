@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".retrofit.RetrofitActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Retrofit：接口 + enqueue"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="OkHttp 发请求，Gson 转对象。enqueue 异步，回调在主线程。"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:textSize="14sp"
+        tools:text="结果" />
+
+    <Button
+        android:id="@+id/btnGetOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GET 单条 @Path" />
+
+    <Button
+        android:id="@+id/btnGetList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GET 列表 @Query" />
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="POST @Body" />
+</LinearLayout>

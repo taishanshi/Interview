@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Interview">
+        <activity
+            android:name="com.stone.interview.mvvm.DemoActivity"
+            android:exported="false"
+            android:label="MVVM Demo" />
+        <activity
+            android:name=".checkcode.Checkcode"
+            android:exported="false"
+            android:label="验证码倒计时" />
+        <activity
+            android:name=".databinding.ObservableActivity"
+            android:exported="false"
+            android:label="BaseObservable 绑定" />
+        <activity
+            android:name=".lifecycle.LifecycleDemoActivity"
+            android:exported="false"
+            android:label="Lifecycle 监听" />
+        <activity
+            android:name=".livedata.LivedataActivity"
+            android:exported="false"
+            android:label="单纯 LiveData" />
+        <activity
+            android:name=".dagger.DaggerActivity"
+            android:exported="false"
+            android:label="Dagger2" />
+        <activity
+            android:name="com.stone.interview.hilt.HiltActivity"
+            android:exported="false"
+            android:label="Hilt" />
+        <activity
+            android:name="com.stone.interview.mvi.MviActivity"
+            android:exported="false"
+            android:label="MVI" />
+        <service
+            android:name=".binder.BinderService"
+            android:exported="false"
+            android:process=":remote" />
+        <activity
+            android:name="com.stone.interview.binder.BinderActivity"
+            android:exported="false"
+            android:label="Binder AIDL" />
+        <activity
+            android:name=".handler.HandlerActivity"
+            android:exported="false"
+            android:label="Handler 弱引用" />
+        <activity
+            android:name="com.stone.interview.anr.AnrActivity"
+            android:exported="false"
+            android:label="制造 ANR" />
+        <activity
+            android:name="com.stone.interview.hotfix.HotfixActivity"
+            android:exported="false"
+            android:label="美团式热修复" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

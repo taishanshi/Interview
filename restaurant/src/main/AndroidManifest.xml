@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Library 模式：无 Application、无 LAUNCHER -->
+    <application>
+        <activity
+            android:name=".RestaurantActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

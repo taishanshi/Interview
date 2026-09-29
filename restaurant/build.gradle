@@ -1,0 +1,64 @@
+// true：独立 App；false：Library，给壳工程 :app 依赖
+def isApp = rootProject.ext.isRestaurantApplication
+
+if (isApp) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'com.android.legacy-kapt'
+
+android {
+    namespace 'com.stone.restaurant'
+    compileSdk 36
+
+    defaultConfig {
+        if (isApp) {
+            applicationId 'com.stone.interview.restaurant'
+        } else {
+            consumerProguardFiles 'consumer-rules.pro'
+        }
+        minSdk 28
+        targetSdk 36
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    sourceSets {
+        main {
+            if (isApp) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+                java.srcDirs += 'src/module/java'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+kapt {
+    arguments {
+        arg('AROUTER_MODULE_NAME', project.getName())
+    }
+}
+
+dependencies {
+    implementation project(':common')
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.activity
+    kapt libs.arouter.compiler
+}

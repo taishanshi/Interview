@@ -1,0 +1,13 @@
+/**
+ * 组件化开关。
+ *
+ * true  = 该 module 以 Application 独立运行（自己的 applicationId、LAUNCHER、Application 类）
+ * false = 该 module 以 Android Library 被壳工程 :app 依赖
+ *
+ * 改完后 Sync Project。独立跑某个业务 module 时，把它改成 true，
+ * 并从 Android Studio 的 Run Configuration 里选对应 module。
+ */
+ext {
+    isMyDemoApplication = false
+    isRestaurantApplication = false
+}

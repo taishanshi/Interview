@@ -1,0 +1,53 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'   // 生成插件入口和 Maven 标记 POM，不要手写 properties
+    id 'maven-publish'
+}
+
+group = 'com.stone.hotfix'
+version = '1.0.3'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+tasks.withType(GroovyCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'org.javassist:javassist:3.30.2-GA'
+    // 只编译期用 AGP API，不打进插件运行时 POM，真正跑时用 APP 工程里的 AGP
+    compileOnly 'com.android.tools.build:gradle:9.1.1'
+}
+
+gradlePlugin {
+    plugins {
+        hotfix {
+            id = 'com.stone.hotfix'  // APP：alias(libs.plugins.hotfix)
+            implementationClass = 'com.stone.interview.javassist.HotfixPlugin'
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = 'localMaven'
+            url = uri("${projectDir}/repo")
+        }
+    }
+}
+
+// Gradle 7 起旧 maven 插件已移除，这里用 maven-publish 提供同名任务，生成 javassist/repo
+tasks.register('uploadArchives') {
+    group = 'upload'
+    description = '发布到本地 Maven 仓库 javassist/repo'
+    dependsOn 'publishAllPublicationsToLocalMavenRepository'
+}
