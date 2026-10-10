@@ -21,7 +21,7 @@ object RetrofitClient {
         }
         OkHttpClient.Builder()
             .addInterceptor(logging)
-            .addNetworkInterceptor(object: Interceptor {
+            .addNetworkInterceptor(object : Interceptor {
                 override fun intercept(chain: Interceptor.Chain): Response {
                     val request = chain.request()
                     Logger.getAnonymousLogger().info { "wwwwwww$request" }
