@@ -23,6 +23,9 @@ import com.stone.interview.anr.AnrActivity
 import com.stone.interview.binder.BinderActivity
 import com.stone.interview.dagger.DaggerActivity
 import com.stone.interview.databinding.ObservableActivity
+import com.stone.interview.foursymbols.FourSymbolsActivity
+import com.stone.interview.fragmentlife.PhotoLifecycleActivity
+import com.stone.interview.glide.GlideActivity
 import com.stone.interview.handler.HandlerActivity
 import com.stone.interview.hilt.HiltActivity
 import com.stone.interview.hotfix.HotfixActivity
@@ -31,6 +34,7 @@ import com.stone.interview.livedata.LivedataActivity
 import com.stone.interview.mvi.MviActivity
 import com.stone.interview.mvvm.DemoActivity
 import com.stone.interview.retrofit.RetrofitActivity
+import com.stone.interview.shape.ShapeCanvasActivity
 
 @Route(path = RouterPath.MYDEMO_MAIN)
 class MainActivity : AppCompatActivity() {
@@ -61,6 +65,10 @@ class MainActivity : AppCompatActivity() {
                 DemoEntry("ANR", AnrActivity::class.java),
                 DemoEntry("热修复", HotfixActivity::class.java),
                 DemoEntry("Retrofit", RetrofitActivity::class.java),
+                DemoEntry("Glide", GlideActivity::class.java),
+                DemoEntry("四象 Tab", FourSymbolsActivity::class.java),
+                DemoEntry("Fragment 生命周期", PhotoLifecycleActivity::class.java),
+                DemoEntry("自定义画布", ShapeCanvasActivity::class.java),
                 DemoEntry("餐厅管理", route = RouterPath.RESTAURANT_MAIN),
             )
             return listOf
