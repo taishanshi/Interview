@@ -53,6 +53,7 @@ dependencies {
     if (!isRestaurantApplication) {
         implementation(project(":restaurant"))
     }
+    implementation(project(":KotlinModule"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

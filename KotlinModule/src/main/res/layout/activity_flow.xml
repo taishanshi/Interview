@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flow 基本用法"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="冷流要点「收集」才生产，再点一次会重新生产。StateFlow 进页面就有当前值。SharedFlow 只把点击之后的事件交给正在收集的人。"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnCold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="收集冷流" />
+
+        <Button
+            android:id="@+id/btnError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="收集会出错的流" />
+
+        <Button
+            android:id="@+id/btnState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="StateFlow +1" />
+
+        <Button
+            android:id="@+id/btnShared"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SharedFlow 发事件" />
+
+        <TextView
+            android:id="@+id/tvLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+</ScrollView>

@@ -17,5 +17,11 @@ class ShellActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnRestaurant).setOnClickListener {
             ARouter.getInstance().build(RouterPath.RESTAURANT_MAIN).navigation()
         }
+        findViewById<Button>(R.id.btnKotlin).setOnClickListener {
+            ARouter.getInstance().build(RouterPath.KOTLIN_SCOPE).navigation()
+        }
+        findViewById<Button>(R.id.btnFlow).setOnClickListener {
+            ARouter.getInstance().build(RouterPath.KOTLIN_FLOW).navigation()
+        }
     }
 }

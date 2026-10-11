@@ -26,4 +26,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="餐厅管理" />
+
+    <Button
+        android:id="@+id/btnKotlin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Kotlin 协程" />
+
+    <Button
+        android:id="@+id/btnFlow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Flow 基本用法" />
 </LinearLayout>

@@ -7,4 +7,6 @@ package com.stone.common
 object RouterPath {
     const val MYDEMO_MAIN = "/mydemo/main"
     const val RESTAURANT_MAIN = "/restaurant/main"
+    const val KOTLIN_SCOPE = "/kotlin/scope"
+    const val KOTLIN_FLOW = "/kotlin/flow"
 }
