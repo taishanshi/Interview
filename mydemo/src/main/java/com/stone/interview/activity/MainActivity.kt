@@ -34,6 +34,7 @@ import com.stone.interview.livedata.LivedataActivity
 import com.stone.interview.mvi.MviActivity
 import com.stone.interview.mvvm.DemoActivity
 import com.stone.interview.retrofit.RetrofitActivity
+import com.stone.interview.shape.ShapeCanvasActivity
 
 @Route(path = RouterPath.MYDEMO_MAIN)
 class MainActivity : AppCompatActivity() {
@@ -67,6 +68,7 @@ class MainActivity : AppCompatActivity() {
                 DemoEntry("Glide", GlideActivity::class.java),
                 DemoEntry("四象 Tab", FourSymbolsActivity::class.java),
                 DemoEntry("Fragment 生命周期", PhotoLifecycleActivity::class.java),
+                DemoEntry("自定义画布", ShapeCanvasActivity::class.java),
                 DemoEntry("餐厅管理", route = RouterPath.RESTAURANT_MAIN),
             )
             return listOf

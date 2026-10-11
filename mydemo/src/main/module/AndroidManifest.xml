@@ -85,6 +85,10 @@
             android:exported="false"
             android:label="Fragment 生命周期" />
         <activity
+            android:name="com.stone.interview.shape.ShapeCanvasActivity"
+            android:exported="false"
+            android:label="自定义画布" />
+        <activity
             android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111820"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="12dp"
+        android:text="形状画布"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvHint"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:ellipsize="end"
+        android:gravity="top"
+        android:lines="2"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="4dp"
+        android:text="拖动移动 · 双指捏合缩放 · 双击旋转 · 长按自转"
+        android:textColor="#9AA7B8"
+        android:textSize="12sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_weight="1">
+
+        <com.stone.interview.shape.ShapeCanvasView
+            android:id="@+id/canvas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:clipToPadding="false"
+            android:fillViewport="false"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="12dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btnCircle"
+                    style="@style/CanvasChip"
+                    android:drawableStart="@drawable/ic_shape_circle"
+                    android:text="圆" />
+
+                <TextView
+                    android:id="@+id/btnTriangle"
+                    style="@style/CanvasChip"
+                    android:drawableStart="@drawable/ic_shape_triangle"
+                    android:text="三角" />
+
+                <TextView
+                    android:id="@+id/btnSquare"
+                    style="@style/CanvasChip"
+                    android:drawableStart="@drawable/ic_shape_square"
+                    android:text="方" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="18dp"
+                    android:layout_marginHorizontal="6dp"
+                    android:background="#33FFFFFF" />
+
+                <TextView
+                    android:id="@+id/btnDelete"
+                    style="@style/CanvasChip"
+                    android:background="@drawable/bg_canvas_chip_danger"
+                    android:drawableStart="@drawable/ic_canvas_delete"
+                    android:text="删除" />
+
+                <TextView
+                    android:id="@+id/btnScatter"
+                    style="@style/CanvasChip"
+                    android:drawableStart="@drawable/ic_canvas_scatter"
+                    android:text="散开" />
+
+                <TextView
+                    android:id="@+id/btnGather"
+                    style="@style/CanvasChip"
+                    android:drawableStart="@drawable/ic_canvas_gather"
+                    android:text="聚拢" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </FrameLayout>
+</LinearLayout>
