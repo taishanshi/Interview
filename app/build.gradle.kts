@@ -6,6 +6,7 @@ plugins {
 
 val isMyDemoApplication = rootProject.extra["isMyDemoApplication"] as Boolean
 val isRestaurantApplication = rootProject.extra["isRestaurantApplication"] as Boolean
+val isKotlinApplication = rootProject.extra["isKotlinApplication"] as Boolean
 
 android {
     namespace = "com.stone.interview.app"
@@ -53,7 +54,9 @@ dependencies {
     if (!isRestaurantApplication) {
         implementation(project(":restaurant"))
     }
-    implementation(project(":KotlinModule"))
+    if (!isKotlinApplication) {
+        implementation(project(":KotlinModule"))
+    }
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

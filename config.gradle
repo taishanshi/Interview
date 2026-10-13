@@ -10,4 +10,5 @@
 ext {
     isMyDemoApplication = false
     isRestaurantApplication = false
+    isKotlinApplication = true
 }

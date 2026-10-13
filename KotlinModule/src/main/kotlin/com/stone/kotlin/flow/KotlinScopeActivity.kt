@@ -1,4 +1,4 @@
-package com.stone.kotlin
+package com.stone.kotlin.flow
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.stone.common.RouterPath
+import com.stone.kotlin.R
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch

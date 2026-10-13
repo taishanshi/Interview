@@ -1,26 +1,16 @@
 package com.stone.interview.activity
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.GridView
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.alibaba.android.arouter.launcher.ARouter
+import com.stone.common.ModuleEntry
 import com.stone.common.RouterPath
-import com.stone.interview.checkcode.Checkcode
-import com.stone.interview.R
+import com.stone.common.bindModuleHome
 import com.stone.interview.anr.AnrActivity
 import com.stone.interview.binder.BinderActivity
+import com.stone.interview.checkcode.Checkcode
 import com.stone.interview.dagger.DaggerActivity
 import com.stone.interview.databinding.ObservableActivity
 import com.stone.interview.foursymbols.FourSymbolsActivity
@@ -49,100 +39,37 @@ class MainActivity : AppCompatActivity() {
     }
 
     external fun stringFromJNI(): String
-    private val demos: List<DemoEntry>
-        get() {
-            val listOf = listOf(
-                DemoEntry("MVVM", DemoActivity::class.java),
-                DemoEntry("验证码", Checkcode::class.java),
-                DemoEntry("Observable", ObservableActivity::class.java),
-                DemoEntry("Lifecycle", LifecycleDemoActivity::class.java),
-                DemoEntry("LiveData", LivedataActivity::class.java),
-                DemoEntry("Dagger2", DaggerActivity::class.java),
-                DemoEntry("Hilt", HiltActivity::class.java),
-                DemoEntry("MVI", MviActivity::class.java),
-                DemoEntry("Binder", BinderActivity::class.java),
-                DemoEntry("Handler", HandlerActivity::class.java),
-                DemoEntry("ANR", AnrActivity::class.java),
-                DemoEntry("热修复", HotfixActivity::class.java),
-                DemoEntry("Retrofit", RetrofitActivity::class.java),
-                DemoEntry("Glide", GlideActivity::class.java),
-                DemoEntry("四象 Tab", FourSymbolsActivity::class.java),
-                DemoEntry("Fragment 生命周期", PhotoLifecycleActivity::class.java),
-                DemoEntry("自定义画布", ShapeCanvasActivity::class.java),
-                DemoEntry("餐厅管理", route = RouterPath.RESTAURANT_MAIN),
-            )
-            return listOf
-        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        bindModuleHome(
+            title = "Interview 演示",
+            kicker = "MyDemo",
+            items = listOf(
+                ModuleEntry("MVVM", clazz = DemoActivity::class.java, subtitle = "ViewModel"),
+                ModuleEntry("验证码", clazz = Checkcode::class.java, subtitle = "倒计时"),
+                ModuleEntry("Observable", clazz = ObservableActivity::class.java, subtitle = "DataBinding"),
+                ModuleEntry("Lifecycle", clazz = LifecycleDemoActivity::class.java, subtitle = "生命周期"),
+                ModuleEntry("LiveData", clazz = LivedataActivity::class.java, subtitle = "观察者"),
+                ModuleEntry("Dagger2", clazz = DaggerActivity::class.java, subtitle = "依赖注入"),
+                ModuleEntry("Hilt", clazz = HiltActivity::class.java, subtitle = "Hilt 注入"),
+                ModuleEntry("MVI", clazz = MviActivity::class.java, subtitle = "单向数据流"),
+                ModuleEntry("Binder", clazz = BinderActivity::class.java, subtitle = "AIDL"),
+                ModuleEntry("Handler", clazz = HandlerActivity::class.java, subtitle = "消息机制"),
+                ModuleEntry("ANR", clazz = AnrActivity::class.java, subtitle = "卡顿演示"),
+                ModuleEntry("热修复", clazz = HotfixActivity::class.java, subtitle = "美团式"),
+                ModuleEntry("Retrofit", clazz = RetrofitActivity::class.java, subtitle = "enqueue"),
+                ModuleEntry("Glide", clazz = GlideActivity::class.java, subtitle = "图片加载"),
+                ModuleEntry("四象 Tab", clazz = FourSymbolsActivity::class.java, subtitle = "ViewPager2"),
+                ModuleEntry("Fragment 生命周期", clazz = PhotoLifecycleActivity::class.java, subtitle = "hide / show"),
+                ModuleEntry("自定义画布", clazz = ShapeCanvasActivity::class.java, subtitle = "拖动缩放"),
+            ),
+        )
 
         if (nativeLoaded) {
             Log.v("wyxwyx", stringFromJNI())
         }
-        initView()
-        testWork()
     }
 
-    fun testWork() {
-        Log.v("wyxwyx", "classloader = $classLoader")
-        Log.v("wyxwyx", "classloader2 = ${classLoader.parent}")
-        Log.v("wyxwyx", "classloader3 = ${classLoader.parent.parent}")
-        //MemoryLearn().start()
-    }
-
-    fun initView() {
-        val root = findViewById<View>(R.id.main)
-        val padL = root.paddingLeft
-        val padT = root.paddingTop
-        val padR = root.paddingRight
-        val padB = root.paddingBottom
-        ViewCompat.setOnApplyWindowInsetsListener(root) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(
-                systemBars.left + padL,
-                systemBars.top + padT,
-                systemBars.right + padR,
-                systemBars.bottom + padB
-            )
-            insets
-        }
-
-        val grid = findViewById<GridView>(R.id.gridDemos)
-        grid.adapter = DemoGridAdapter(demos)
-        grid.setOnItemClickListener { _, _, position, _ ->
-            val item = demos[position]
-            if (item.route != null) {
-                ARouter.getInstance().build(item.route).navigation()
-            } else {
-                startActivity(Intent(this, item.target))
-            }
-        }
-    }
-}
-
-private data class DemoEntry(
-    val title: String,
-    val target: Class<out Activity>? = null,
-    val route: String? = null,
-)
-
-private class DemoGridAdapter(
-    private val items: List<DemoEntry>
-) : BaseAdapter() {
-
-    override fun getCount(): Int = items.size
-
-    override fun getItem(position: Int): DemoEntry = items[position]
-
-    override fun getItemId(position: Int): Long = position.toLong()
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val view = convertView ?: LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_demo_grid, parent, false)
-        view.findViewById<TextView>(R.id.tvItem).text = items[position].title
-        return view
-    }
 }

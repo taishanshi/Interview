@@ -1,4 +1,4 @@
-package com.stone.kotlin
+package com.stone.kotlin.flow
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
