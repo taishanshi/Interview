@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.hilt)
 }
 
-val isMyDemoApplication = rootProject.extra["isMyDemoApplication"] as Boolean
+val isBasicModuleApplication = rootProject.extra["isBasicModuleApplication"] as Boolean
 val isRestaurantApplication = rootProject.extra["isRestaurantApplication"] as Boolean
 val isKotlinApplication = rootProject.extra["isKotlinApplication"] as Boolean
 
@@ -48,8 +48,8 @@ android {
 dependencies {
     implementation(project(":common"))
     // 业务 module 处于 Library 模式时才被壳工程依赖；独立 Application 时不能 implementation 它
-    if (!isMyDemoApplication) {
-        implementation(project(":mydemo"))
+    if (!isBasicModuleApplication) {
+        implementation(project(":BasicModule"))
     }
     if (!isRestaurantApplication) {
         implementation(project(":restaurant"))

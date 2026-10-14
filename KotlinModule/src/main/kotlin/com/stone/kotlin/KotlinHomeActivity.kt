@@ -11,6 +11,7 @@ import com.stone.kotlin.compose.ComposeAccompanistActivity
 import com.stone.kotlin.compose.ComposeBasicsActivity
 import com.stone.kotlin.compose.ComposeLaunchedEffectActivity
 import com.stone.kotlin.compose.ComposeLiveDataActivity
+import com.stone.kotlin.compose.ComposeNavigationActivity
 import com.stone.kotlin.compose.ComposeCanvasActivity
 import com.stone.kotlin.compose.ComposePhotoGridActivity
 import com.stone.kotlin.compose.ComposePlaygroundActivity
@@ -40,12 +41,13 @@ class KotlinHomeActivity : AppCompatActivity() {
                 ModuleEntry("瀑布流", clazz = ComposeWaterfallActivity::class.java, subtitle = "自定义 Layout"),
                 ModuleEntry("Compose Tab", clazz = ComposeTabScrollActivity::class.java, subtitle = "Pager + 滚动"),
                 ModuleEntry("Compose 画布", clazz = ComposeCanvasActivity::class.java, subtitle = "贝塞尔与手势"),
-                ModuleEntry("李一桐", clazz = ComposePhotoGridActivity::class.java, subtitle = "2×2 照片墙"),
+                ModuleEntry("李一桐", clazz = ComposePhotoGridActivity::class.java, subtitle = "轮播 + 2×2"),
                 ModuleEntry("Compose 手写", clazz = ComposePlaygroundActivity::class.java, subtitle = "空白练习页"),
                 ModuleEntry("Accompanist", clazz = ComposeAccompanistActivity::class.java, subtitle = "权限封装"),
                 ModuleEntry("LiveData", clazz = ComposeLiveDataActivity::class.java, subtitle = "delay 模拟请求"),
                 ModuleEntry("LaunchedEffect", clazz = ComposeLaunchedEffectActivity::class.java, subtitle = "组合里的协程"),
                 ModuleEntry("滑动冲突", clazz = ComposeScrollConflictActivity::class.java, subtitle = "内外拦截"),
+                ModuleEntry("Navigation", clazz = ComposeNavigationActivity::class.java, subtitle = "NavHost 回退栈"),
             ),
         )
     }

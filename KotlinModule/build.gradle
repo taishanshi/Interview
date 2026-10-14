@@ -81,6 +81,7 @@ dependencies {
     implementation libs.androidx.activity.compose
     implementation libs.coil.compose
     implementation libs.accompanist.permissions
+    implementation libs.androidx.navigation.compose
     debugImplementation libs.androidx.compose.ui.tooling
     kapt libs.arouter.compiler
 }

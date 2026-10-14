@@ -16,9 +16,9 @@ class ShellActivity : AppCompatActivity() {
             kicker = "组件化入口",
             items = listOf(
                 ModuleEntry(
-                    "Interview 演示",
+                    "BasicModule",
                     subtitle = "View · 架构 · 网络",
-                    route = RouterPath.MYDEMO_MAIN,
+                    route = RouterPath.BASIC_MAIN,
                 ),
                 ModuleEntry(
                     "餐厅管理",

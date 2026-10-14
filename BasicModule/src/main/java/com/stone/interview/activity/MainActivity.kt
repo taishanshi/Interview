@@ -23,10 +23,11 @@ import com.stone.interview.lifecycle.LifecycleDemoActivity
 import com.stone.interview.livedata.LivedataActivity
 import com.stone.interview.mvi.MviActivity
 import com.stone.interview.mvvm.DemoActivity
+import com.stone.interview.recyclerview.RecyclerViewActivity
 import com.stone.interview.retrofit.RetrofitActivity
 import com.stone.interview.shape.ShapeCanvasActivity
 
-@Route(path = RouterPath.MYDEMO_MAIN)
+@Route(path = RouterPath.BASIC_MAIN)
 class MainActivity : AppCompatActivity() {
     companion object {
         private val nativeLoaded: Boolean = try {
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         bindModuleHome(
             title = "Interview 演示",
-            kicker = "MyDemo",
+            kicker = "BasicModule",
             items = listOf(
                 ModuleEntry("MVVM", clazz = DemoActivity::class.java, subtitle = "ViewModel"),
                 ModuleEntry("验证码", clazz = Checkcode::class.java, subtitle = "倒计时"),
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                 ModuleEntry("热修复", clazz = HotfixActivity::class.java, subtitle = "美团式"),
                 ModuleEntry("Retrofit", clazz = RetrofitActivity::class.java, subtitle = "enqueue"),
                 ModuleEntry("Glide", clazz = GlideActivity::class.java, subtitle = "图片加载"),
+                ModuleEntry("RecyclerView", clazz = RecyclerViewActivity::class.java, subtitle = "Adapter · 复用"),
                 ModuleEntry("四象 Tab", clazz = FourSymbolsActivity::class.java, subtitle = "ViewPager2"),
                 ModuleEntry("Fragment 生命周期", clazz = PhotoLifecycleActivity::class.java, subtitle = "hide / show"),
                 ModuleEntry("自定义画布", clazz = ShapeCanvasActivity::class.java, subtitle = "拖动缩放"),

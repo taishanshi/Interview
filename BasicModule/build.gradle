@@ -1,5 +1,5 @@
 // true：独立 App；false：Library，给壳工程 :app 依赖
-def isApp = rootProject.ext.isMyDemoApplication
+def isApp = rootProject.ext.isBasicModuleApplication
 
 if (isApp) {
     apply plugin: 'com.android.application'
@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         if (isApp) {
-            applicationId 'com.stone.interview.mydemo'
+            applicationId 'com.stone.interview.basic'
         } else {
             consumerProguardFiles 'consumer-rules.pro'
         }

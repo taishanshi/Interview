@@ -5,7 +5,7 @@ package com.stone.common
  * 路径必须至少两级：/group/path
  */
 object RouterPath {
-    const val MYDEMO_MAIN = "/mydemo/main"
+    const val BASIC_MAIN = "/basic/main"
     const val RESTAURANT_MAIN = "/restaurant/main"
     const val KOTLIN_MAIN = "/kotlin/main"
     const val KOTLIN_SCOPE = "/kotlin/scope"
@@ -21,4 +21,5 @@ object RouterPath {
     const val KOTLIN_COMPOSE_LIVEDATA = "/kotlin/compose_livedata"
     const val KOTLIN_COMPOSE_LAUNCHED_EFFECT = "/kotlin/compose_launched_effect"
     const val KOTLIN_COMPOSE_SCROLL_CONFLICT = "/kotlin/compose_scroll_conflict"
+    const val KOTLIN_COMPOSE_NAVIGATION = "/kotlin/compose_navigation"
 }

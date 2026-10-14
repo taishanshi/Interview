@@ -17,10 +17,6 @@
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="mydemo">
-        <option name="selectionMode" value="DROPDOWN" />
-        <DialogSelection />
-      </SelectionState>
       <SelectionState runConfigName="ComposeBasicsPreview">
         <option name="selectionMode" value="DROPDOWN" />
         <DialogSelection />

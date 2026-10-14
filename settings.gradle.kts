@@ -29,6 +29,6 @@ dependencyResolutionManagement {
 rootProject.name = "Interview"
 include(":app")
 include(":common")
-include(":mydemo")
+include(":BasicModule")
 include(":restaurant")
 include(":KotlinModule")

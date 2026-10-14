@@ -11,7 +11,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/mydemo_app_name"
+        android:label="@string/basic_module_app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Interview"
@@ -76,6 +76,10 @@
             android:name="com.stone.interview.glide.GlideActivity"
             android:exported="false"
             android:label="Glide" />
+        <activity
+            android:name="com.stone.interview.recyclerview.RecyclerViewActivity"
+            android:exported="false"
+            android:label="RecyclerView" />
         <activity
             android:name="com.stone.interview.foursymbols.FourSymbolsActivity"
             android:exported="false"

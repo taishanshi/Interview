@@ -74,6 +74,10 @@
             android:name=".compose.ComposeScrollConflictActivity"
             android:exported="false"
             android:label="滑动冲突" />
+        <activity
+            android:name=".compose.ComposeNavigationActivity"
+            android:exported="false"
+            android:label="Navigation" />
     </application>
 
 </manifest>

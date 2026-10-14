@@ -66,6 +66,10 @@
             android:exported="false"
             android:label="Glide" />
         <activity
+            android:name="com.stone.interview.recyclerview.RecyclerViewActivity"
+            android:exported="false"
+            android:label="RecyclerView" />
+        <activity
             android:name="com.stone.interview.foursymbols.FourSymbolsActivity"
             android:exported="false"
             android:label="四象" />

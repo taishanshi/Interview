@@ -8,7 +8,7 @@
  * 并从 Android Studio 的 Run Configuration 里选对应 module。
  */
 ext {
-    isMyDemoApplication = false
+    isBasicModuleApplication = false
     isRestaurantApplication = false
-    isKotlinApplication = true
+    isKotlinApplication = false
 }

@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.compose.compiler) apply false
 }
 
-// 组件化开关：isMyDemoApplication / isRestaurantApplication / isKotlinApplication
+// 组件化开关：isBasicModuleApplication / isRestaurantApplication / isKotlinApplication
 apply(from = "config.gradle")
 
 tasks.register<GradleBuild>("uploadArchives") {
