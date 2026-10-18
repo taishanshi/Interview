@@ -14,6 +14,7 @@ class DemoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDemoBinding
     private val viewModel: DemoViewModel by viewModels()
+    private val viewModel2: Int by lazy { 1+1 }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

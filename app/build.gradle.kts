@@ -11,9 +11,7 @@ val isKotlinApplication = rootProject.extra["isKotlinApplication"] as Boolean
 android {
     namespace = "com.stone.interview.app"
     compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
+        version = release(37)
     }
 
     defaultConfig {
