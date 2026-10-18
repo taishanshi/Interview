@@ -3,10 +3,7 @@ package com.stone.restaurant
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.alibaba.android.arouter.facade.annotation.Route
-import com.stone.common.RouterPath
 
-@Route(path = RouterPath.RESTAURANT_MAIN)
 class RestaurantActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

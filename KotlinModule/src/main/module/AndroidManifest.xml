@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Application 模式：独立安装运行 -->
+    <application
+        android:name=".KotlinApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/kotlin_app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KotlinModule">
+        <activity
+            android:name=".KotlinHomeActivity"
+            android:exported="true"
+            android:label="Kotlin">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".flow.KotlinScopeActivity"
+            android:exported="false"
+            android:label="Kotlin 协程" />
+        <activity
+            android:name=".flow.FlowActivity"
+            android:exported="false"
+            android:label="Flow" />
+        <activity
+            android:name=".compose.ComposeBasicsActivity"
+            android:exported="false"
+            android:label="Compose 基础" />
+        <activity
+            android:name=".compose.ComposeScaffoldActivity"
+            android:exported="false"
+            android:label="Scaffold" />
+        <activity
+            android:name=".compose.ComposeWaterfallActivity"
+            android:exported="false"
+            android:label="瀑布流" />
+        <activity
+            android:name=".compose.ComposeTabScrollActivity"
+            android:exported="false"
+            android:label="Compose Tab" />
+        <activity
+            android:name=".compose.ComposeCanvasActivity"
+            android:exported="false"
+            android:label="Compose 画布" />
+        <activity
+            android:name=".compose.ComposePhotoGridActivity"
+            android:exported="false"
+            android:label="李一桐" />
+        <activity
+            android:name=".compose.ComposePlaygroundActivity"
+            android:exported="false"
+            android:label="Compose 手写" />
+        <activity
+            android:name=".compose.ComposeAccompanistActivity"
+            android:exported="false"
+            android:label="Accompanist" />
+        <activity
+            android:name=".compose.ComposeLiveDataActivity"
+            android:exported="false"
+            android:label="LiveData" />
+        <activity
+            android:name=".compose.ComposeLaunchedEffectActivity"
+            android:exported="false"
+            android:label="LaunchedEffect" />
+        <activity
+            android:name=".compose.ComposeScrollConflictActivity"
+            android:exported="false"
+            android:label="滑动冲突" />
+        <activity
+            android:name=".compose.ComposeNavigationActivity"
+            android:exported="false"
+            android:label="Navigation" />
+    </application>
+
+</manifest>

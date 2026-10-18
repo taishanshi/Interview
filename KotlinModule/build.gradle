@@ -1,0 +1,87 @@
+// true：独立 App；false：Library，给壳工程 :app 依赖
+def isApp = rootProject.ext.isKotlinApplication
+
+if (isApp) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'com.android.legacy-kapt'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+
+android {
+    namespace 'com.stone.kotlin'
+    compileSdk 36
+
+    defaultConfig {
+        if (isApp) {
+            applicationId 'com.stone.interview.kotlin'
+        } else {
+            consumerProguardFiles 'consumer-rules.pro'
+        }
+        minSdk 28
+        targetSdk 36
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    sourceSets {
+        main {
+            if (isApp) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+kapt {
+    arguments {
+        arg('AROUTER_MODULE_NAME', project.getName())
+    }
+}
+
+dependencies {
+    implementation project(':common')
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.activity.ktx
+    implementation libs.androidx.lifecycle.runtime.ktx
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    implementation libs.androidx.lifecycle.livedata.ktx
+    implementation libs.androidx.lifecycle.viewmodel.compose
+    implementation libs.androidx.compose.runtime.livedata
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.kotlinx.coroutines.android
+    implementation platform(libs.androidx.compose.bom)
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.compose.material3
+    implementation libs.androidx.compose.material.icons.core
+    implementation libs.androidx.compose.foundation
+    implementation libs.androidx.compose.animation
+    implementation libs.androidx.compose.ui.tooling.preview
+    implementation libs.androidx.activity.compose
+    implementation libs.coil.compose
+    implementation libs.accompanist.permissions
+    implementation libs.androidx.navigation.compose
+    debugImplementation libs.androidx.compose.ui.tooling
+    kapt libs.arouter.compiler
+}

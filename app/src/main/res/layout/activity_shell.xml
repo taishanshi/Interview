@@ -14,11 +14,11 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnMyDemo"
+        android:id="@+id/btnBasicModule"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="MyDemo 面试演示" />
+        android:text="BasicModule 面试演示" />
 
     <Button
         android:id="@+id/btnRestaurant"
@@ -40,4 +40,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Flow 基本用法" />
+
+    <Button
+        android:id="@+id/btnCompose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Compose 基础" />
+
+    <Button
+        android:id="@+id/btnComposePlayground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Compose 手写" />
 </LinearLayout>

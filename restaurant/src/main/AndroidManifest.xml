@@ -4,8 +4,13 @@
     <!-- Library 模式：无 Application、无 LAUNCHER -->
     <application>
         <activity
+            android:name=".RestaurantHomeActivity"
+            android:exported="false"
+            android:label="餐厅管理" />
+        <activity
             android:name=".RestaurantActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="餐厅演示" />
     </application>
 
 </manifest>

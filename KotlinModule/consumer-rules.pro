@@ -1,0 +1,1 @@
+# KotlinModule library consumer rules
