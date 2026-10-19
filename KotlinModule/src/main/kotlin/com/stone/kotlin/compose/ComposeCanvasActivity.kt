@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -36,10 +37,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.PathMeasure
+import androidx.compose.ui.graphics.StampedPathEffectStyle
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -93,6 +96,7 @@ fun BezierBoardScreen() {
         targetValue = 1f,
         animationSpec = infiniteRepeatable(
             animation = tween(2600, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
         ),
         label = "traveler",
     )
@@ -248,12 +252,21 @@ private fun BezierCanvas(
         }
         // 雷达射程圈：中心淡绿圆
         drawCircle(Color(0x2222C55E), radius = size.minDimension * 0.28f, center = Offset(cx, cy))
-
-        val dash = PathEffect.dashPathEffect(floatArrayOf(16f, 12f), 0f)
+        val shape = Path().apply {
+            // 一个朝上的小三角形
+            moveTo(0f, -10f)
+            lineTo(8f, 10f)
+            lineTo(-8f, 10f)
+            close()
+        }
+//        val line = PathEffect.dashPathEffect(floatArrayOf(16f, 12f), 0f)
+        val line = PathEffect.stampedPathEffect(shape ,advance = 40f,      // 每 40px 盖一个章
+            phase = 0f,
+            style = StampedPathEffectStyle.Rotate)
         // 控制柄虚线：起点 P0 → 控制点 P1
-        drawLine(Color(0x88FFFFFF), p0, p1, 3f, pathEffect = dash)
+        drawLine(Color(0x88FFFFFF), p0, p1, 3f, pathEffect = line)
         // 控制柄虚线：终点 P3 → 控制点 P2
-        drawLine(Color(0x88FFFFFF), p3, p2, 3f, pathEffect = dash)
+        drawLine(Color(0x88FFFFFF), p3, p2, 3f, pathEffect = line)
 
         val path = Path().apply {
             moveTo(p0.x, p0.y)

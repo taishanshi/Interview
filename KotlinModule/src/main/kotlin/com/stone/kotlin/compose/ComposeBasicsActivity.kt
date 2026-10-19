@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -37,6 +38,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
@@ -57,12 +59,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -112,20 +117,27 @@ fun ComposeBasicsScreen() {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Text("Compose 基础", style = MaterialTheme.typography.headlineSmall)
+        Text(text = "Compose 基础",
+            modifier = Modifier.fillMaxWidth()
+                .background(Color.Yellow)
+                .align(Alignment.CenterHorizontally)
+                .padding(20.dp),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.headlineSmall)
         Text(
             "状态变了，相关 Composable 会重组。点按钮、改输入，看下面跟着变。",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
 
-        SectionCard(title = "Text / Button / TextField") {
+        SectionCard(title = "Text / Button / TextField", color = Color.Yellow) {
             var name by remember { mutableStateOf("") }
             var count by remember { mutableIntStateOf(0) }
             OutlinedTextField(
                 value = name,
                 onValueChange = { name = it },
                 label = { Text("名字") },
+                prefix = {Text("$") },
                 modifier = Modifier.fillMaxWidth(),
             )
             Button(onClick = { count++ }) {
@@ -158,7 +170,7 @@ fun ComposeBasicsScreen() {
                 bottomEnd = 24.dp,
             )
             val gradient = Brush.linearGradient(
-                colors = listOf(Color(0xFFFF6B81), Color(0xFF5B6CFF)),
+                colors = listOf(Color(0xFFFF6B81), Color(0xFF5B6CFF), Color(0x66666666)),
                 start = Offset.Zero,
                 end = Offset.Infinite,
             )
@@ -307,15 +319,27 @@ fun ComposeBasicsScreen() {
                 initialValue = 0.85f,
                 targetValue = 1.15f,
                 animationSpec = infiniteRepeatable(
-                    animation = tween(700, easing = LinearEasing),
+                    animation = tween(700, easing = FastOutSlowInEasing),
                     repeatMode = RepeatMode.Reverse,
                 ),
                 label = "pulse",
+            )
+            val offsetX by infinite.animateFloat(
+                initialValue = -200f,
+                targetValue = 200f,
+                animationSpec = infiniteRepeatable(
+                    animation = tween(1000, easing = LinearEasing),
+                    repeatMode = RepeatMode.Reverse,
+                ),
+                label = "offsetX"
             )
             Box(
                 modifier = Modifier
                     .size(64.dp)
                     .scale(pulse)
+                    .graphicsLayer {
+                        translationX = offsetX
+                    }
                     .background(MaterialTheme.colorScheme.tertiary, CircleShape)
                     .align(Alignment.CenterHorizontally),
             )
@@ -328,11 +352,12 @@ fun ComposeBasicsScreen() {
 @Composable
 private fun SectionCard(
     title: String,
+    color: Color = Color.White,
     content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit,
 ) {
-    Card(modifier = Modifier.fillMaxWidth()) {
+    Card {
         Column(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.fillMaxWidth().background(color).padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(title, style = MaterialTheme.typography.titleMedium)

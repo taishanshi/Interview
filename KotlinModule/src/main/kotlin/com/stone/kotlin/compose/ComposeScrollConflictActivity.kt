@@ -1,5 +1,6 @@
 package com.stone.kotlin.compose
 
+import android.R
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -38,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -91,7 +93,7 @@ fun ScrollConflictScreen() {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Text("滑动冲突", style = MaterialTheme.typography.headlineSmall)
+        Text(modifier = Modifier.fillMaxWidth().align(Alignment.CenterHorizontally), text = "滑动冲突", style = MaterialTheme.typography.headlineSmall, textAlign = TextAlign.Center, color = Color.Red)
         Text(
             if (resolved) {
                 "解决版：同方向只留一个竖滑；横滑列表走 nestedScroll，父不抢横向。"

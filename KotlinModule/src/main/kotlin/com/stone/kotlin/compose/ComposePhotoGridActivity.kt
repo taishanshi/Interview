@@ -146,7 +146,7 @@ private fun PhotoCarousel(photos: List<Photo>) {
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(16f / 9f)
-                .clip(RoundedCornerShape(12.dp)),
+                .clip(RoundedCornerShape(22.dp)),
         ) { page ->
             val photo = photos[page]
             Box {

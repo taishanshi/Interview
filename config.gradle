@@ -10,5 +10,5 @@
 ext {
     isBasicModuleApplication = false
     isRestaurantApplication = false
-    isKotlinApplication = false
+    isKotlinApplication = true
 }
