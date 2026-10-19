@@ -8,8 +8,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.LifecycleOwner
 import com.stone.interview.R
 
 class LifecycleDemoActivity : AppCompatActivity() {
@@ -45,7 +43,9 @@ class LifecycleDemoActivity : AppCompatActivity() {
         tvState = findViewById(R.id.tvState)
         findViewById<Button>(R.id.btnFinish).setOnClickListener { finish() }
 
-        lifecycle.addObserver(LifecycleEventLogger())
+        //lifecycle.addObserver(LifecycleEventLogger())
+        lifecycle.addObserver(DefaultLifecycleEventLogger())
+        //lifecycle.addObserver(LifecycleEventObserverLogger())
     }
 
     override fun onPause() {

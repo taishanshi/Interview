@@ -10,7 +10,7 @@ apply plugin: 'com.android.legacy-kapt'
 
 android {
     namespace 'com.stone.restaurant'
-    compileSdk 36
+    compileSdk 37
 
     defaultConfig {
         if (isApp) {
